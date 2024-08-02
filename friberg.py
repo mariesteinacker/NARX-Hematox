@@ -42,8 +42,9 @@ def E_drug_step(t, slope, therapies_tuple):
 
 def friberg_drug(t, y, ktr, gamma, c0, slope, therapies):
     """
-    differential eqn defining friberg model including cell loss due to
-    E_drug
+    Differential equations defining Friberg model including cell loss due to
+    E_drug. Original publication by Friberg et al., 2002.
+    https://doi.org/10.1200/jco.2002.02.140
     :param t: time in hours
     :param y: vec of compartments (prol, t1, t2, t3, circ)
     :param ktr: rate constant
@@ -72,9 +73,10 @@ def friberg_drug(t, y, ktr, gamma, c0, slope, therapies):
 def solve_friberg(gamma, MTT, slope, c0, therapies_tuple,
                             end_fu, t_eval):
     """
-    solve friberg equation for given parameters and therapy plan
+    Solve Friberg model equations for given parameters and therapy plan
     therapy starting time points given as list/array in days and
-    standardized doses
+    standardized doses. Original publication by Friberg et al., 2002.
+    https://doi.org/10.1200/jco.2002.02.140
     :param gamma: exponent for feedback
     :param MTT: cell maturation time in hours
     :param slope: slope for linear drug effect for drug function
@@ -134,7 +136,7 @@ def poplog_fit_friberg_mse(params, pop_params, y_arr, t_arr, therapies):
 
 def friberg(params, t_arr, therapies):
     """
-    generate friberg model prediction with given parameters
+    Generate Friberg model prediction with given parameters.
     :param params: model parameter guess [gamma, MTT, slope, c0/10**9]
     :param t_arr: days to evaluate
     :param therapies: treatment in administration days and accompanying doses
@@ -150,13 +152,13 @@ def friberg(params, t_arr, therapies):
 
 def test_friberg(pc, therapies, t_arr, scalery):
     """
-    helper function for testing friberg model in context of transfer learning
-    :param pc: friberg model parameters [gamma, MTT, slope, c0/10**9]
+    helper function for testing Friberg model in context of transfer learning
+    :param pc: Friberg model parameters [gamma, MTT, slope, c0/10**9]
     :param therapies: treatment in administration days and accompanying doses
     :param t_arr: evaluation times in days
     :param scalery: scaling function for NARX model usage
-    :return: treatment information for NARX model, scaled friberg model
-    prediciton and unscaled friberg model prediction
+    :return: treatment information for NARX model, scaled Friberg model
+    prediciton and unscaled Friberg model prediction
     """
     # unpack friberg parameter configuration
     gamma, MTT, slope, c0t = pc
