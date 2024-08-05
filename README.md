@@ -3,7 +3,10 @@ This repository contains a demonstration for learning an individual patients tim
 
 # Usage
 In the notebook `NARX_showcase.ipynb` it is demonstrated how individual 
-patient dynamics can be learned with NARX neural networks, and how transfer learning via a semi-mechanistic model can be utilized. This is shown with a simulated individual patient time series, which is generated with the model of Friberg et al., 2002 (https://doi.org/10.1200/jco.2002.02.140), and an added simulated noise.  
+patient dynamics can be learned with NARX neural networks, and how transfer 
+learning via a semi-mechanistic model can be utilized. This is shown with a 
+simulated individual patient time series, which is generated with the Friberg 
+model (Friberg et al., JCO. 20, 4713–4721 (2002), https://doi.org/10.1200/jco.2002.02.140), and an added simulated noise.
 
 # How To
 1. Clone this environment to your computer.    
@@ -14,7 +17,8 @@ patient dynamics can be learned with NARX neural networks, and how transfer lear
    This will take around 10 minutes on modern hardware.
 
 ### Hardware Requirements
-The demonstrator notebook runs on a local pc with 8 cores and 16 GB RAM.
+The demonstrator notebook runs on a standart laptop with an Intel® Core™ i7-1165G7 × 8
+and 16 GB RAM in under 8 minutes.
 
 ### Software Versions Used 
    - Python 3.9   
@@ -35,7 +39,7 @@ The demonstrator notebook runs on a local pc with 8 cores and 16 GB RAM.
 - `NARX.py` Implementation of ARX-RNN and ARX-FNN model classes.
 - `utils.py` Different helper and utility functions for model training.
 - `therapies_all.csv` Generated treatment scenarios for transfer learning, 
-  as used in Steinacker et al., 2023 (https://doi.org/10.1016/j.heliyon.2023.e17890). 
+  as used in Steinacker et al., Heliyon. 9, e17890 (2023), (https://doi.org/10.1016/j.heliyon.2023.e17890). 
 - `index_weights_FNN.h5` FNN starting weights for transfer learning.
 - `index_weights_GRU.h5` GRU starting weights for transfer learning.
 

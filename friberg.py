@@ -11,7 +11,7 @@ log_transformer = FunctionTransformer(np.log10,
 
 def E_drug_step(t, slope, therapies_tuple):
     """
-    Drug effect function
+    Drug effect function for Friberg model
     :param t: time in hours
     :param slope: E_eff individual parameter of drug effect
     :param therapies_tuple: treatment times and dose information, tuple
@@ -43,7 +43,7 @@ def E_drug_step(t, slope, therapies_tuple):
 def friberg_drug(t, y, ktr, gamma, c0, slope, therapies):
     """
     Differential equations defining Friberg model including cell loss due to
-    E_drug. Original publication by Friberg et al., 2002.
+    E_drug. Original publication: Friberg et al., JCO. 20, 4713–4721 (2002),
     https://doi.org/10.1200/jco.2002.02.140
     :param t: time in hours
     :param y: vec of compartments (prol, t1, t2, t3, circ)
@@ -75,8 +75,8 @@ def solve_friberg(gamma, MTT, slope, c0, therapies_tuple,
     """
     Solve Friberg model equations for given parameters and therapy plan
     therapy starting time points given as list/array in days and
-    standardized doses. Original publication by Friberg et al., 2002.
-    https://doi.org/10.1200/jco.2002.02.140
+    standardized doses. Original publication: Friberg et al., JCO. 20,
+    4713–4721 (2002), https://doi.org/10.1200/jco.2002.02.140
     :param gamma: exponent for feedback
     :param MTT: cell maturation time in hours
     :param slope: slope for linear drug effect for drug function
@@ -109,11 +109,11 @@ def solve_friberg(gamma, MTT, slope, c0, therapies_tuple,
 
 def poplog_fit_friberg_mse(params, pop_params, y_arr, t_arr, therapies):
     """
-    loss function to calibrate friberg model given population context,
+    loss function to calibrate Friberg model given population context,
     on logarithmic scale to emphasize nadir calibration
     :param params: model parameter guess [gamma, MTT, slope, c0/10**9]
     :param pop_params: population parameters [gamma, MTT, slope, c0/10**9]
-    :param y_arr: observation to calibrate friberg model to
+    :param y_arr: observation to calibrate the Friberg model
     :param t_arr: obsrevation times in days
     :param therapies: treatment times in days and accompanying doses
     :return: loss function, mse + population penalty
