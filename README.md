@@ -1,5 +1,9 @@
 # Predicting chemotherapy-induced thrombotoxicity by NARX neural networks and transfer learning
-This repository contains a demonstration for learning an individual patients time series with NARX networks. It accompanies the puplication "Predicting chemotherapy-induced thrombotoxicity by NARX neural networks and transfer learning" by M. Steinacker, Y. Kheifetz and M. Scholz. 
+This repository contains a demonstration for learning an individual 
+patients time series with NARX networks. It accompanies the puplication 
+"Predicting chemotherapy-induced thrombotoxicity by NARX neural networks 
+and transfer learning" by M. Steinacker, Y. Kheifetz and M. Scholz 
+(A preprint can be found here: https://doi.org/10.1101/2024.08.06.606816). 
 
 # Usage
 In the notebook `NARX_showcase.ipynb` it is demonstrated how individual 
