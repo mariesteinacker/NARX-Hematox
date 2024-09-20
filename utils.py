@@ -137,6 +137,25 @@ class Step_MSE_missing(tf.keras.losses.Loss):
         return sol
 
 
+class MSE_missing(tf.keras.losses.Loss):
+    def __init__(self, s, name='step_mse_missing'):
+        """
+        Augmented MSE loss for missing data
+        """
+        super(MSE_missing, self).__init__(name=name)
+
+    # mse with masked target
+    def call(self, y_true, y_pred):
+        y_true = tf.reshape(y_true, [-1])
+        y_pred = tf.reshape(y_pred, [-1])
+        ymask = tf.math.is_finite(y_true)
+        sol = tf.reduce_mean(
+            tf.math.square(tf.cast(y_pred[ymask], tf.float32) -
+                           tf.cast(y_true[ymask], tf.float32))
+            , axis=-1)
+        return sol
+
+
 class smoothing(tf.keras.losses.Loss):
     def __init__(self, k, c, name='smoothing'):
         """
